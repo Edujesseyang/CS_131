@@ -1,0 +1,5 @@
+package CS31LAB3.Q3;
+
+public interface IDiscountStrategy {
+    double applyDiscount(double amount);
+}

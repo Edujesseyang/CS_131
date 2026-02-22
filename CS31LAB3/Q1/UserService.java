@@ -1,8 +1,12 @@
-package CS31LAB3.Problem_1;
+package CS31LAB3.Q1;
+
+import CS31LAB3.Q2.INotification;
+import CS31LAB3.Q2.SMSNotification;
 
 public class UserService {
     private final String DB_URL = "jdbc:mysql://localhost:3306/mydb"; // generated
     private final String SMTP_SERVER = "smtp.gmail.com";
+    private final String NOTICE_MESSAGE = "User registered and email sent!";
 
     public void registerUser(String username, String email) throws Exception {
         if(!email.contains("@")){
@@ -13,5 +17,12 @@ public class UserService {
         UserRepository userRepo = new UserRepository(newUser, DB_URL);
         EmailService emailService = new EmailService(newUser, SMTP_SERVER);
         System.out.println("User registered and email sent!");
+        INotification notification = new SMSNotification(NOTICE_MESSAGE);
+        notifyUser(notification);
+
+    }
+
+    public void notifyUser(INotification notification){
+        notification.sent();
     }
 }

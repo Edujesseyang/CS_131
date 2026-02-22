@@ -1,4 +1,4 @@
-package CS31LAB3.Problem_1;
+package CS31LAB3.Q1;
 
 public class SmtpSession {
     private final User user;
